@@ -1,0 +1,33 @@
+---
+title: "Data_import"
+author: "Ada"
+date: "9/18/2018"
+output: html_document
+---
+```{R setup, include = FALSE}
+library(tidyverse)
+```
+## Import FAS csv files
+```{r}
+litters_data = read_csv(file = "~/Documents/Ada's Documents/Columbia Biostatistics/Data Science/R programming/Lecture_5/Data_wrangling_1/data/FAS_litters.csv")
+litters_data = read_csv(file = "./data/FAS_litters.csv")
+litters_data = read_csv("./data/FAS_litters.csv")
+litters_data = janitor::clean_names(litters_data)
+```
+
+* ***the first two lines of code, are they the same?***
+* clean_names:Resulting names are unique and consist only of the _ character, numbers, and letters. 
+
+##here::here
+```{r}
+
+library(here)
+here("data", "file_i_want.csv")
+```
+
+##
+```{r learning assessment1}
+pups_data = read_csv((file = "./data/FAS_pups.csv"))
+pups_data = read_csv((file = "~/Documents/Ada's Documents/Columbia Biostatistics/Data Science/R programming/Lecture_5/Data_wrangling_1/data/FAS_pups.csv"))
+```
+
