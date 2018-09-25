@@ -85,7 +85,7 @@ arrange(litters_data, gd0_weight)
 arrange(litters_data, desc(pups_born_alive), gd0_weight)
 ```
 
-## %in%
+## %>%
 
 ```{r}
 
@@ -139,11 +139,21 @@ litters_data =
   janitor::clean_names() %>%
   select(-pups_survive) %>%
   mutate(
-   # wt_gain = gd18_weight - gd0_weight,
-    group = tolower(group)) %in%
-#    lm(gd18_weight ~ gd0_weight)
+   wt_gain = gd18_weight - gd0_weight,
+    group = tolower(group)) %>%
+    lm(gd18_weight ~ gd0_weight, data=.)
 litters_data
 
 
-#  what . mean?
 
+```
+
+learning assessment
+```{r}
+pups_data_assess = 
+  read.csv("./data/FAS_pups.csv") %>%
+  janitor::clean_names() %>%
+  filter(sex == 1) %>%
+  select(-pd_ears) %>%
+  mutate(wt_pdpivot = pd_pivot >= 7)
+View(pups_data_assess)
